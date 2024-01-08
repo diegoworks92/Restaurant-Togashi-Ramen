@@ -1,8 +1,3 @@
-# React + Vite
+Restaurant-Togashi-Ramen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This React JS project simulates a website for an Asian restaurant specializing in ramen. It displays a variety of dishes with detailed descriptions of their ingredients, highlighting if they contain spicy elements or if they are suitable for vegetarians or vegans. Upon selecting a dish and refreshments, the site offers the option to dine in the restaurant, pick up the order, or request a home delivery service. It even allows adding or removing products before order confirmation. The website also provides simulated contact information, schedules, location, social media links, and a gallery of kitchen images.
