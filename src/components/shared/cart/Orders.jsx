@@ -37,16 +37,25 @@ const Orders = (props) => {
 
 	const [explanationId, setExplanationId] = useState(null);
 
+	const [arrowsUp, setArrowsUp] = useState({});
+
 	const toggleExplanation = (id) => {
 		setExplanationId(explanationId === id ? null : id);
-		setArrowUp(!arrowUp);
+		setArrowsUp((prevState) => {
+			// First set all the arrows down
+			const newArrowsUp = Object.keys(prevState).reduce((acc, key) => {
+				acc[key] = false;
+				return acc;
+			}, {});
+			// Then open the current card arrow.
+			newArrowsUp[id] = !prevState[id];
+			return newArrowsUp;
+		});
 	};
-
-	const [arrowUp, setArrowUp] = useState(false);
 
 	return (
 		<div className='overflow-y-scroll'>
-			<div className='flex justify-between mb-1 -mt-4 p-4 text-dark dark:text-light'>
+			<div className='flex justify-between mb-1 -mt-4 p-4 text-light dark:text-light'>
 				<h5 className=''>Item</h5>
 
 				<div className='flex items-center ml-auto'>
@@ -60,7 +69,7 @@ const Orders = (props) => {
 			{onAddProductCar.map((product) => (
 				<div key={product.id}>
 					<div
-						className={`bg-primary border border-light dark:bg-secondary pt-4 pl-4 pr-4 ${pFour} rounded-xl mb-4`}
+						className={`bg-light border border-dark dark:border-light dark:bg-secondary pt-4 pl-4 pr-4 ${pFour} rounded-xl mb-4`}
 					>
 						<div className='grid grid-cols-6 mb-4'>
 							{/* Product description */}
@@ -72,7 +81,7 @@ const Orders = (props) => {
 									} object-cover`}
 								></img>
 								<div>
-									<h5 className='text-md text-light dark:text-light'>
+									<h5 className='text-md text-dark dark:text-light'>
 										{product.name}
 									</h5>
 								</div>
@@ -111,13 +120,13 @@ const Orders = (props) => {
 								</div>
 
 								<div className='flex items-center ml-auto'>
-									<span className='text-light dark:text-light'>
+									<span className='text-dark dark:text-light'>
 										{product.quantity}
 									</span>
 								</div>
 
 								<div className='flex items-center ml-3'>
-									<span className='text-light dark:text-light'>
+									<span className='text-dark dark:text-light'>
 										{product.price}€
 									</span>
 								</div>
@@ -126,7 +135,7 @@ const Orders = (props) => {
 						{/* Note */}
 						<div className='grid grid-cols-6 items-center'>
 							<div
-								className={`${descriptions} col-span-5 border border-light rounded-xl`}
+								className={`${descriptions} col-span-5 border border-dark dark:border-light rounded-xl`}
 							>
 								<p className='m-1'>{product.description}</p>
 							</div>
@@ -134,15 +143,22 @@ const Orders = (props) => {
 							<div className={`${explanation} col-span-6 flex justify-around`}>
 								<div className={`flex justify-center flex-col items-center`}>
 									<button
-										className={`text-sm  hover:text-primary cursor-pointer flex ${
-											explanationId === product.id ? 'text-primary' : ''
+										className={`text-sm text-dark dark:text-light  hover:text-fall dark:hover:text-primary cursor-pointer flex ${
+											explanationId === product.id
+												? 'text-fall dark:text-primary'
+												: ''
 										}`}
 										onClick={() => toggleExplanation(product.id)}
 									>
 										Description
 									</button>
+
 									<p onClick={() => toggleExplanation(product.id)}>
-										{arrowUp ? <RiArrowUpSLine /> : <RiArrowDownSLine />}
+										{arrowsUp[product.id] ? (
+											<RiArrowUpSLine className='text-fall dark:text-primary' />
+										) : (
+											<RiArrowDownSLine className='text-dark dark:text-light' />
+										)}
 									</p>
 								</div>
 
@@ -158,7 +174,7 @@ const Orders = (props) => {
 								{explanationId === product.id && (
 									<p
 										onClick={() => toggleExplanation(product.id)}
-										className=' text-light border border-light rounded-xl z-10'
+										className='text-dark dark:text-light border p-2 border-dark dark:border-light rounded-xl z-10'
 									>
 										{product.description}
 									</p>

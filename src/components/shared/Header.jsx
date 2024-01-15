@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useButtonContext } from './context/Context';
-
-const Header = (props) => {
-	/* Username */
-	const { name } = props;
-
+import { RiUser3Line } from 'react-icons/ri';
+import Login from './header/login';
+const Header = ({
+	name,
+	setShowModal,
+	setName,
+	setAllProducts,
+	setTotal,
+	setCountProducts,
+}) => {
 	/* date */
 	const [date, setDate] = useState(new Date());
 
@@ -56,16 +61,30 @@ const Header = (props) => {
 			{/* Title */}
 			<div className='flex flex-col items-center gap-4 md:flex-row md:justify-between '>
 				<img
-					className=' w-24 h-28 2xl:w-20 2xl:h-24'
+					className=' w-24 h-32 2xl:w-20 2xl:h-24'
 					src='logo.ico'
 					alt='logo of a cat dressed as a ninja eating ramen'
 				/>
 				<div>
-					<h1 className=' text-xl text-dark dark:text-light '>
-						WELCOME {name}
+					<h1 className=' text-xl text-dark dark:text-light md:-mt-11'>
+						{name.trim() === '' ? (
+							<Login
+								setName={setName}
+								setShowModal={setShowModal}
+								setAllProducts={setAllProducts}
+								setTotal={setTotal}
+								setCountProducts={setCountProducts}
+								setIsActive={setIsActive}
+							/>
+						) : (
+							<>
+								<span>WELCOME</span>{' '}
+								<span className='notranslate'> {name} </span>
+							</>
+						)}
 					</h1>
 					<p className='text-center md:text-left text-dark dark:text-light opacity-50'>
-						{date.toLocaleDateString()}
+						{name.trim() === '' ? '' : `${date.toLocaleDateString()}`}
 					</p>
 				</div>
 			</div>

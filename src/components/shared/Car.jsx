@@ -33,16 +33,16 @@ const Car = (props) => {
 
 	return (
 		<div
-			className={`2xl:col-span-2 fixed top-0 bg-concrete dark:bg-dark w-full 2xl:w-96 2xl:right-0 h-full transition-all z-40 ${
+			className={`2xl:col-span-2 fixed top-0 bg-primary dark:bg-dark w-full 2xl:w-96 2xl:right-0 h-full transition-all z-40 ${
 				showOrder ? 'right-0' : '-right-full'
 			}`}
 		>
 			{/* Orders */}
-			<div className='relative pb-40 pt-3 2xl:pt-1 text-light p-8 h-full flex flex-col'>
+			<div className='relative pb-10 pt-3 2xl:pt-1 text-light p-8 h-full flex flex-col'>
 				{' '}
 				<NumberOrder setShowOrder={setShowOrder} />
 				<WhereToEat
-					buttonsClass='flex items-center justify-around 2xl:justify-between gap-4 flex-wrap mb-4'
+					buttonsClass='flex items-center justify-between sm:justify-around 2xl:justify-between gap-1 sm:gap-4 flex-wrap mb-4 sm:mb-1 md:mb-4'
 					activeButton={activeButton}
 					ClickDine={clickDine}
 					setActiveButton={setActiveButton}
@@ -65,7 +65,7 @@ const Car = (props) => {
 					pFour=''
 				/>
 				{/* Submit payment */}
-				<div className='absolute bg-concrete dark:bg-secondary w-full bottom-0 left-0 p-4 mt-auto'>
+				<div className='absolute bg-primary dark:bg-secondary w-full bottom-0 left-0 p-4 mt-auto'>
 					<AccountTotal
 						total={total}
 						countProducts={countProducts}
@@ -83,8 +83,8 @@ const Car = (props) => {
 						mainClass='flex items-center justify-between mb-4'
 						twoXlHidden='2xl:hidden'
 						totalPayment='Total'
-						textDark='text-dark'
-						lineWhite='border-b border-dark dark:border-light w-full'
+						textDark='text-light'
+						lineWhite='border dark:border-light w-full'
 						isOpen={isOpen}
 						setIsOpen={setIsOpen}
 						toggleOpen={toggleOpen}

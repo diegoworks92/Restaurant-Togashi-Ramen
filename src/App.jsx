@@ -153,7 +153,15 @@ function App() {
 					<main className='2xl:pl-32 2xl:pr-96 pb-20'>
 						<div className='md:p-8 p-4'>
 							{/* Header */}
-							<Header setShowOrdersTab={setShowOrdersTab} name={name} />
+							<Header
+								setShowOrdersTab={setShowOrdersTab}
+								name={name}
+								setName={setName}
+								setShowModal={setShowModal}
+								setAllProducts={setAllProducts}
+								setTotal={setTotal}
+								setCountProducts={setCountProducts}
+							/>
 
 							{/* Content */}
 							<Routes>

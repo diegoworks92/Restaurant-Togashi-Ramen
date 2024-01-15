@@ -46,7 +46,7 @@ const OrdersTab = (props) => {
 				id='orders'
 				className={`${
 					isLargeScreen ? 'visible' : 'hidden'
-				} bg-concrete dark:bg-dark relative pb-40 pt-16 m-10 2xl:pt-1 text-light p-8 h-full flex flex-col rounded-xl`}
+				} bg-primary dark:bg-dark relative pb-40 pt-16 m-10 2xl:pt-1 text-dark dark:text-light p-8 h-full flex flex-col rounded-xl`}
 			>
 				<NumberOrder setShowOrder={setShowOrder} />
 
@@ -86,7 +86,7 @@ const OrdersTab = (props) => {
 						payment='Payment'
 						mainClass='flex items-center justify-between mb-4'
 						totalPayment='Total'
-						textDark='text-dark'
+						textDark='text-light'
 						isOpen={isOpen}
 						setIsOpen={setIsOpen}
 						toggleOpen={toggleOpen}

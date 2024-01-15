@@ -64,7 +64,7 @@ const Imgs = () => {
 				</div>
 			</div>
 			{isShowing && (
-				<div className='fixed inset-0 bg-dark bg-opacity-80 flex items-center justify-center z-50'>
+				<div className='fixed inset-0 bg-dark bg-opacity-80 flex items-center justify-center z-50 notranslate'>
 					<div className='relative'>
 						<button
 							className='absolute top-0 right-0 m-2 text-light text-3xl opacity-50 hover:opacity-100'

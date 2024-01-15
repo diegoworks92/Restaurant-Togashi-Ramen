@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { MdOutlineCancel } from 'react-icons/md';
+import Buttons from './designs/Buttons';
 
 function SignOff({ name, setName, showModal, setShowModal }) {
 	const [error, setError] = useState('');
 	const handleNameSubmit = () => {
 		if (name.trim() === '') {
-			setError('Please enter your name.');
+			setError('Por favor, introduce tu nombre.');
 		} else {
 			setError('');
 			setShowModal(false);
@@ -32,14 +34,21 @@ function SignOff({ name, setName, showModal, setShowModal }) {
 							className='hidden sm:inline-block sm:align-middle sm:h-screen'
 							aria-hidden='true'
 						>
-							&#8203;
+							​
 						</span>
-						<div className='inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full'>
+						<div className='inline-block align-bottom bg-light rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-light'>
 							<div className='bg-primary text-dark dark:bg-dark px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>
 								<div className='sm:flex sm:items-start'>
+									<button
+										type='button'
+										className='absolute top-0 right-0 m-2 text-light text-3xl sm:px-1'
+										onClick={() => setShowModal(false)}
+									>
+										<MdOutlineCancel />
+									</button>
 									<div className='mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left'>
 										<h3
-											className='text-lg leading-6 font-medium text-light'
+											className='text-2xl leading-6 font-semibold text-light mb-5'
 											id='modal-title'
 										>
 											Log in
@@ -51,7 +60,6 @@ function SignOff({ name, setName, showModal, setShowModal }) {
 												onKeyPress={handleKeyPress}
 												className='shadow appearance-none border rounded w-full py-2 px-3 dark:text-light dark:bg-secondary border-secondary leading-tight focus:outline-none focus:shadow-outline'
 												id='username'
-												type='text'
 												placeholder="What's your name?"
 											/>
 											{error && (
@@ -61,14 +69,14 @@ function SignOff({ name, setName, showModal, setShowModal }) {
 									</div>
 								</div>
 							</div>
-							<div className='text-center bg-primary dark:bg-dark px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse'>
-								<button
-									type='button'
-									className='bg-fall text-light py-2 px-4 rounded-xl border border-secondary transition duration-400 ease-in-out transform hover:scale-105 active:scale-95 active:bg-tangerine'
-									onClick={handleNameSubmit}
-								>
-									Accept
-								</button>
+							<div className='text-center bg-primary dark:bg-dark px-4 sm:px-6 sm:flex sm:flex-row-reverse'>
+								<Buttons
+									buttonName='Accept'
+									bgPrimary='bg-fall dark:bg-fall'
+									bgHover='bg-tangerine hover:dark:bg-tangerine'
+									paddingX='4'
+									onclick={handleNameSubmit}
+								></Buttons>
 							</div>
 						</div>
 					</div>

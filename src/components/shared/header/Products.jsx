@@ -99,15 +99,15 @@ const Products = ({
 					<span className='mx-2 text-xl -mt-1 text-delete'>
 						<GiChiliPepper />
 					</span>
-					<pan className='text-dark dark:text-light'>Spicy.</pan>
+					<span className='text-dark dark:text-light'>Spicy.</span>
 					<span className='mx-2 text-xl -mt-1  text-vegetarian'>
 						<FaLeaf />
 					</span>
-					<pan className='text-dark dark:text-light'>Vegetarian.</pan>
+					<span className='text-dark dark:text-light'>Vegetarian.</span>
 					<span className='mx-2 text-xl -mt-1  text-vegan'>
 						<PiPlantFill />
 					</span>
-					<pan className='text-dark dark:text-light'>Vegan.</pan>
+					<span className='text-dark dark:text-light'>Vegan.</span>
 				</div>
 
 				<div
@@ -116,7 +116,7 @@ const Products = ({
 					<span className='mx-2 text-xl -mt-1 text-delete'>
 						<RiBeerFill />
 					</span>
-					<pan>Alcohol</pan>
+					<span>Alcohol</span>
 				</div>
 
 				<h2 className='order-1 2xl:order-none text-2xl text-dark dark:text-light -mt-5'>

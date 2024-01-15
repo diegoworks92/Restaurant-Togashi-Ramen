@@ -55,10 +55,10 @@ const AccountTotal = (props) => {
 	};
 
 	return (
-		<div className={`${textDark} dark:text-light -mt-3`}>
+		<div className={`${textDark} dark:text-light -mt-4`}>
 			<div className={`${lineWhite}`}></div>
 			<div className='flex justify-center'>
-				<button onClick={toggleOpen} className='mb-4'>
+				<button onClick={toggleOpen} /* className='mb-0 md:mb-0 lg:mb-0' */>
 					<div className='flex justify-center'>
 						<span className='text-lg'>{isOpenAc} </span>
 					</div>
@@ -94,7 +94,7 @@ const AccountTotal = (props) => {
 						buttonName={payment}
 						bgPrimary='bg-fall dark:bg-fall'
 						bgHover='bg-tangerine hover:dark:bg-tangerine'
-						paddingX='4'
+						paddingX='4 mb-0 sm:-mb-2 md:mb-0'
 						onclick={orderClick}
 					/>
 				</Link>

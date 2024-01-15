@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const WhereToEat = (props) => {
 	const {
 		buttonsClass,
@@ -36,10 +34,10 @@ const WhereToEat = (props) => {
 				{buttons.map((button) => (
 					<button
 						key={button.id}
-						className={`py-2 px-2 rounded-xl ${
+						className={`py-2 sm:py-1 md:py-2 px-1 sm:px-2 rounded-xl flex flex-wrap justify-center ${
 							activeButton === button.id
-								? 'bg-primary text-light dark:text-light'
-								: 'text-dark dark:text-primary border border-dark dark:border-light'
+								? 'bg-fall text-light dark:text-light'
+								: 'text-light dark:text-primary border border-light dark:border-light'
 						}`}
 						onClick={() => clickDine(button.id)}
 					>

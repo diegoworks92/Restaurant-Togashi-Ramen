@@ -2,7 +2,7 @@ import Anchor from '../designs/Anchor';
 
 const Presentation = () => {
 	return (
-		<div className=' relative 2xl:mb-10 flex justify-center items-center 2xl:h-[500px] text-light'>
+		<div className=' relative 2xl:mb-10 flex justify-center items-center sm:h-[500px] md:h-[650px] lg:h-[680px] xl:h-[800px] 2xl:h-[590px] text-light'>
 			<img
 				src='../bg.jpg'
 				alt='ramen restaurant'
@@ -14,7 +14,7 @@ const Presentation = () => {
 					Togashi Sapporo Ramen
 				</h1>
 
-				<div className='flex justify-center'>
+				<div className='flex justify-center flex-wrap sm:gap-6 mt-10'>
 					<Anchor anchorName='Contact' hRef='#contact' />
 
 					<Anchor anchorName='Info' hRef='#discount' />
