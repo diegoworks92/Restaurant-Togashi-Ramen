@@ -55,7 +55,7 @@ const Orders = (props) => {
 
 	return (
 		<div className='overflow-y-scroll'>
-			<div className='flex justify-between mb-1 -mt-4 p-4 text-light dark:text-light'>
+			<div className='flex justify-between mb-2 mt-2 p-4 text-light dark:text-light'>
 				<h5 className=''>Item</h5>
 
 				<div className='flex items-center ml-auto'>

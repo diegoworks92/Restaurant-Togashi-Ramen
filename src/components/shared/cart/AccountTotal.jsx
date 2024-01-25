@@ -55,7 +55,7 @@ const AccountTotal = (props) => {
 	};
 
 	return (
-		<div className={`${textDark} dark:text-light -mt-4`}>
+		<div className={`${textDark} dark:text-light mt-0`}>
 			<div className={`${lineWhite}`}></div>
 			<div className='flex justify-center'>
 				<button onClick={toggleOpen} /* className='mb-0 md:mb-0 lg:mb-0' */>
@@ -66,7 +66,7 @@ const AccountTotal = (props) => {
 				</button>
 			</div>
 			{isOpen && (
-				<div>
+				<div className='px-6 pt-6'>
 					<div className={`${countProducts === 0 ? 'hidden' : mainClass} mb-2`}>
 						<span>To empty cart</span>
 						<button>
@@ -88,7 +88,7 @@ const AccountTotal = (props) => {
 					/>
 				</div>
 			)}
-			<div className='flex justify-center'>
+			<div className='flex justify-center mb-4'>
 				<Link to={window.innerWidth >= 1024 ? 'orders' : 'notification'}>
 					<Buttons
 						buttonName={payment}

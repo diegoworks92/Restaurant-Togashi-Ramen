@@ -65,7 +65,7 @@ const Car = (props) => {
 					pFour=''
 				/>
 				{/* Submit payment */}
-				<div className='absolute bg-primary dark:bg-secondary w-full bottom-0 left-0 p-4 mt-auto'>
+				<div className='absolute bg-primary dark:bg-secondary w-full bottom-0 left-0 mt-auto'>
 					<AccountTotal
 						total={total}
 						countProducts={countProducts}
