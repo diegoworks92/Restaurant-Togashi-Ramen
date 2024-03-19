@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useUserStore } from './store/store';
 import { MdOutlineCancel } from 'react-icons/md';
 import Buttons from './designs/Buttons';
 
-function SignOff({ name, setName, showModal, setShowModal }) {
+function SignOff() {
+	const { name, setName, showModal, setShowModal } = useUserStore();
 	const [error, setError] = useState('');
 	const handleNameSubmit = () => {
 		if (name.trim() === '') {

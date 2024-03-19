@@ -1,39 +1,35 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useButtonContext, useContextOrders } from './context/Context';
+import {
+	useMenuStore,
+	useOrdersStore,
+	useCartStore,
+	useUserStore,
+} from './store/store';
 import {
 	RiHome6Line,
 	RiPercentLine,
 	RiPieChartLine,
 	RiMailLine,
-	RiNotification2Line,
+	/* 	RiNotification2Line, */
 	RiLogoutBoxRLine,
 } from 'react-icons/ri';
 import { MdDarkMode, MdOutlineLightMode, MdPhotoCamera } from 'react-icons/md';
 
 const Sidebar = (props) => {
-	const {
-		showMenu,
-		setShowOrdersTab,
-		showOrdersTab,
-		name,
-		setName,
-		showModal,
-		setShowModal,
-		setAllProducts,
-		setTotal,
-		setCountProducts,
-		theme,
-		setTheme,
-	} = props;
+	const { theme, setTheme } = props;
 
 	const [color, setColor] = useState(false);
 
-	const [activeButton, setActiveButton] = useState(null);
+	const { isOrdersActive, setIsOrdersActive, setShowOrdersTab, showOrdersTab } =
+		useOrdersStore();
 
-	const { isActive, setIsActive } = useButtonContext();
+	const { setCountProducts, setAllProducts, setTotal } = useCartStore();
 
-	const { isOrdersActive, setIsOrdersActive } = useContextOrders();
+	const { name, setName, setShowModal } = useUserStore();
+
+	const { showMenu, activeButton, setActiveButton, isActive, setIsActive } =
+		useMenuStore();
 
 	const toggleOrdersTab = (id) => {
 		setShowOrdersTab(!showOrdersTab);

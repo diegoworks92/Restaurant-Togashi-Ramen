@@ -1,8 +1,10 @@
+import { useMenuStore } from '../../store/store';
 import Collection from './Collection';
 import Delivery from './Delivery';
 import DineHere from './DineHere';
 
-const OrderEat = ({ whereToEat, setWhereToEat, numberWithDecimal }) => {
+const OrderEat = ({ numberWithDecimal }) => {
+	const { whereToEat } = useMenuStore();
 	let collection = <DineHere numberWithDecimal={numberWithDecimal} />;
 
 	if (whereToEat === 1) {

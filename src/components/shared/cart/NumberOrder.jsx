@@ -1,6 +1,8 @@
+import { useOrdersStore } from '../store/store';
 import { RiCloseLine } from 'react-icons/ri';
 
-const NumberOrder = ({ setShowOrder }) => {
+const NumberOrder = () => {
+	const { setShowOrder } = useOrdersStore();
 	// Checks if a random number already exists in the session storage
 	let numeroAleatorio = sessionStorage.getItem('numeroAleatorio');
 

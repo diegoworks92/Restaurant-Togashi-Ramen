@@ -1,25 +1,8 @@
 import Products from './Products';
 
-const Ramen = ({
-	showOrder,
-	setShowOrder,
-	allProducts,
-	setAllProducts,
-	countProducts,
-	setCountProducts,
-	total,
-	setTotal,
-}) => {
+const Ramen = () => {
 	return (
 		<Products
-			showOrder={showOrder}
-			setShowOrder={setShowOrder}
-			allProducts={allProducts}
-			setAllProducts={setAllProducts}
-			total={total}
-			setTotal={setTotal}
-			countProducts={countProducts}
-			setCountProducts={setCountProducts}
 			title='Ramen'
 			typeProduct='ramen'
 			wi='w-40'

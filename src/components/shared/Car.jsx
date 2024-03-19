@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useMenuStore, useCartStore, useOrdersStore } from './store/store';
 import Orders from './cart/Orders';
 import AccountTotal from './cart/AccountTotal';
 import WhereToEat from './cart/WhereToEat';
@@ -6,26 +7,16 @@ import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import NumberOrder from './cart/NumberOrder';
 
 const Car = (props) => {
-	const {
-		showOrder,
-		setShowOrder,
-		allProducts,
-		setAllProducts,
-		total,
-		setTotal,
-		countProducts,
-		setCountProducts,
-		activeButton,
-		setActiveButton,
-		setShowOrdersTab,
-		showOrdersTab,
-		whereToEat,
-		setWhereToEat,
-	} = props;
+	const {} = props;
+	const { activeButton, setActiveButton } = useMenuStore();
+
+	const { showOrder } = useOrdersStore;
 
 	const clickDine = (id) => {
 		setActiveButton(id);
 	};
+
+	const { total, setTotal } = useCartStore();
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -40,24 +31,16 @@ const Car = (props) => {
 			{/* Orders */}
 			<div className='relative pb-10 pt-3 2xl:pt-1 text-light p-8 h-full flex flex-col'>
 				{' '}
-				<NumberOrder setShowOrder={setShowOrder} />
+				<NumberOrder />
 				<WhereToEat
 					buttonsClass='flex items-center justify-between sm:justify-around 2xl:justify-between gap-1 sm:gap-4 flex-wrap mb-4 sm:mb-1 md:mb-4'
 					activeButton={activeButton}
 					ClickDine={clickDine}
 					setActiveButton={setActiveButton}
-					showOrder={showOrder}
-					setShowOrder={setShowOrder}
-					whereToEat={whereToEat}
-					setWhereToEat={setWhereToEat}
 				/>
 				<Orders
-					allProducts={allProducts}
-					setAllProducts={setAllProducts}
 					total={total}
 					setTotal={setTotal}
-					countProducts={countProducts}
-					setCountProducts={setCountProducts}
 					descriptions='hidden'
 					disguise='hidden'
 					trash='hidden'
@@ -68,12 +51,7 @@ const Car = (props) => {
 				<div className='absolute bg-primary dark:bg-secondary w-full bottom-0 left-0 mt-auto'>
 					<AccountTotal
 						total={total}
-						countProducts={countProducts}
-						setAllProducts={setAllProducts}
 						setTotal={setTotal}
-						setCountProducts={setCountProducts}
-						setShowOrdersTab={setShowOrdersTab}
-						showOrdersTab={showOrdersTab}
 						cuantity='Cuantity'
 						discount='Discount'
 						discountValue={0}
@@ -90,8 +68,6 @@ const Car = (props) => {
 						toggleOpen={toggleOpen}
 						details='Show Details'
 						isOpenAc={isOpen ? <RiArrowDownSLine /> : <RiArrowUpSLine />}
-						whereToEat={whereToEat}
-						setWhereToEat={setWhereToEat}
 					/>
 				</div>
 			</div>

@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useButtonContext } from './context/Context';
+import { useUserStore, useMenuStore } from './store/store';
 import { RiUser3Line } from 'react-icons/ri';
 import Login from './header/login';
-const Header = ({
-	name,
-	setShowModal,
-	setName,
-	setAllProducts,
-	setTotal,
-	setCountProducts,
-}) => {
+const Header = ({}) => {
 	/* date */
 	const [date, setDate] = useState(new Date());
 
-	const { isActive, setIsActive } = useButtonContext();
+	const { isActive, setIsActive } = useMenuStore();
+
+	const { name, setName } = useUserStore();
+
 	const [activeButton2, setActiveButton2] = useState(null);
 
 	useEffect(() => {
@@ -68,14 +64,7 @@ const Header = ({
 				<div>
 					<h1 className=' text-xl text-dark dark:text-light md:-mt-11'>
 						{name.trim() === '' ? (
-							<Login
-								setName={setName}
-								setShowModal={setShowModal}
-								setAllProducts={setAllProducts}
-								setTotal={setTotal}
-								setCountProducts={setCountProducts}
-								setIsActive={setIsActive}
-							/>
+							<Login setName={setName} setIsActive={setIsActive} />
 						) : (
 							<>
 								<span>WELCOME</span>{' '}

@@ -1,11 +1,9 @@
+import { useMenuStore } from '../store/store';
+
 const WhereToEat = (props) => {
-	const {
-		buttonsClass,
-		activeButton,
-		setActiveButton,
-		whereToEat,
-		setWhereToEat,
-	} = props;
+	const { activeButton, setActiveButton, setWhereToEat } = useMenuStore();
+
+	const { buttonsClass } = props;
 
 	const buttons = [
 		{ id: 1, name: 'Dine Here' },

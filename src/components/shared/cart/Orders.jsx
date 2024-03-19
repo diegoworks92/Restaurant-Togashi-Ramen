@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useCartStore } from '../store/store';
 import {
 	RiDeleteBin6Line,
 	RiBeerFill,
@@ -10,20 +11,16 @@ import { FaLeaf } from 'react-icons/fa';
 import { GiChiliPepper } from 'react-icons/gi';
 
 const Orders = (props) => {
+	const { descriptions, disguise, explanation, trash, trash2, pFour } = props;
+
 	const {
 		allProducts,
 		setAllProducts,
-		total,
-		setTotal,
 		countProducts,
 		setCountProducts,
-		descriptions,
-		disguise,
-		explanation,
-		trash,
-		trash2,
-		pFour,
-	} = props;
+		total,
+		setTotal,
+	} = useCartStore();
 
 	const onAddProductCar = [...allProducts];
 

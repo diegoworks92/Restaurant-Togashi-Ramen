@@ -1,4 +1,4 @@
-import { useContextOrders } from '../context/Context';
+import { useOrdersStore, useCartStore } from '../store/store';
 import { Link, useNavigate } from 'react-router-dom';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import OrderEat from './whereToEat/OrderEat';
@@ -6,30 +6,21 @@ import Buttons from '../designs/Buttons';
 
 const AccountTotal = (props) => {
 	const {
-		total,
-		countProducts,
-		setAllProducts,
-		setTotal,
-		setCountProducts,
-		setShowOrdersTab,
-		showOrdersTab,
 		cuantity,
-		discount,
-		discountValue,
 		payment,
-		classPay,
 		mainClass,
-		twoXlHidden,
-		totalPayment,
 		textDark,
 		lineWhite,
 		toggleOpen,
 		isOpen,
 		details,
 		isOpenAc,
-		whereToEat,
-		setWhereToEat,
 	} = props;
+
+	const { setIsOrdersActive } = useOrdersStore();
+
+	const { setAllProducts, total, setTotal, countProducts, setCountProducts } =
+		useCartStore();
 
 	const numberWithDecimal = total.toFixed(2);
 
@@ -38,8 +29,6 @@ const AccountTotal = (props) => {
 		setTotal(0);
 		setCountProducts(0);
 	};
-
-	const { setIsOrdersActive } = useContextOrders();
 
 	const navigate = useNavigate();
 
@@ -58,7 +47,7 @@ const AccountTotal = (props) => {
 		<div className={`${textDark} dark:text-light mt-0`}>
 			<div className={`${lineWhite}`}></div>
 			<div className='flex justify-center'>
-				<button onClick={toggleOpen} /* className='mb-0 md:mb-0 lg:mb-0' */>
+				<button onClick={toggleOpen}>
 					<div className='flex justify-center'>
 						<span className='text-lg'>{isOpenAc} </span>
 					</div>
@@ -82,10 +71,7 @@ const AccountTotal = (props) => {
 						<span>{countProducts}</span>
 					</div>
 
-					<OrderEat
-						whereToEat={whereToEat}
-						numberWithDecimal={numberWithDecimal}
-					/>
+					<OrderEat numberWithDecimal={numberWithDecimal} />
 				</div>
 			)}
 			<div className='flex justify-center mb-4'>

@@ -1,25 +1,8 @@
 import Products from './Products';
 
-const HotDishes = ({
-	showOrder,
-	setShowOrder,
-	allProducts,
-	setAllProducts,
-	countProducts,
-	setCountProducts,
-	total,
-	setTotal,
-}) => {
+const HotDishes = () => {
 	return (
 		<Products
-			showOrder={showOrder}
-			setShowOrder={setShowOrder}
-			allProducts={allProducts}
-			setAllProducts={setAllProducts}
-			total={total}
-			setTotal={setTotal}
-			countProducts={countProducts}
-			setCountProducts={setCountProducts}
 			title='Choose Dishes'
 			typeProduct='dishes'
 			wi='w-40'

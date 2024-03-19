@@ -5,20 +5,7 @@ import WhereToEat from '../cart/WhereToEat';
 import NumberOrder from '../cart/NumberOrder';
 
 const OrdersTab = (props) => {
-	const {
-		showOrder,
-		setShowOrder,
-		allProducts,
-		setAllProducts,
-		total,
-		setTotal,
-		countProducts,
-		setCountProducts,
-		activeButton,
-		setActiveButton,
-		whereToEat,
-		setWhereToEat,
-	} = props;
+	const { setShowOrder } = props;
 
 	const [isOpen, setIsOpen] = useState(true);
 
@@ -50,21 +37,9 @@ const OrdersTab = (props) => {
 			>
 				<NumberOrder setShowOrder={setShowOrder} />
 
-				<WhereToEat
-					activeButton={activeButton}
-					setActiveButton={setActiveButton}
-					buttonsClass='flex items-center justify-start gap-4 flex-wrap mb-4'
-					whereToEat={whereToEat}
-					setWhereToEat={setWhereToEat}
-				/>
+				<WhereToEat buttonsClass='flex items-center justify-start gap-4 flex-wrap mb-4' />
 
 				<Orders
-					allProducts={allProducts}
-					setAllProducts={setAllProducts}
-					total={total}
-					setTotal={setTotal}
-					countProducts={countProducts}
-					setCountProducts={setCountProducts}
 					explanation='hidden'
 					trash=''
 					trash2='hidden'
@@ -75,11 +50,6 @@ const OrdersTab = (props) => {
 				{/* Submit payment */}
 				<div>
 					<AccountTotal
-						total={total}
-						countProducts={countProducts}
-						setAllProducts={setAllProducts}
-						setTotal={setTotal}
-						setCountProducts={setCountProducts}
 						cuantity='Cuantity'
 						discount='Discount'
 						discountValue={0}
@@ -90,8 +60,6 @@ const OrdersTab = (props) => {
 						isOpen={isOpen}
 						setIsOpen={setIsOpen}
 						toggleOpen={toggleOpen}
-						whereToEat={whereToEat}
-						setWhereToEat={setWhereToEat}
 					/>
 				</div>
 			</div>

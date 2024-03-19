@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useCartStore } from '../store/store';
 import { ramen, dishes, drinks } from '../cart/dishData';
 import {
 	RiArrowDownSLine,
@@ -10,21 +11,16 @@ import { PiPlantFill } from 'react-icons/pi';
 import { FaLeaf } from 'react-icons/fa';
 import { GiChiliPepper } from 'react-icons/gi';
 
-const Products = ({
-	allProducts,
-	setAllProducts,
-	countProducts,
-	setCountProducts,
-	total,
-	setTotal,
-	title,
-	typeProduct,
-	wi,
-	hei,
-	roun,
-	kindFood,
-	alcohol,
-}) => {
+const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
+	const {
+		total,
+		setTotal,
+		allProducts,
+		setAllProducts,
+		countProducts,
+		setCountProducts,
+	} = useCartStore();
+
 	const onAddProduct = (product) => {
 		if (
 			allProducts.find((item) => item.id === `${product.type}-${product.id}`)

@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useCartStore, useUserStore } from '../store/store';
 import { RiUser3Line } from 'react-icons/ri';
 
 const Login = ({
-	setShowModal,
 	setName,
-	setAllProducts,
-	setTotal,
-	setCountProducts,
+
 	setIsActive,
 }) => {
+	const { setShowModal } = useUserStore();
+
+	const { setCountProducts, setTotal, setAllProducts } = useCartStore();
+
 	const clickButton = () => {
 		setName('');
 		setShowModal(true);
