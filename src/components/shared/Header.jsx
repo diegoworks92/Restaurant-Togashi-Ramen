@@ -1,33 +1,38 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useUserStore, useMenuStore } from './store/store';
-import { RiUser3Line } from 'react-icons/ri';
-import Login from './header/login';
+import Login from './header/Login';
 const Header = ({}) => {
 	/* date */
 	const [date, setDate] = useState(new Date());
 
-	const { isActive, setIsActive } = useMenuStore();
+	const [isActive, setIsActive] = useState(true);
 
 	const { name, setName } = useUserStore();
 
-	const [activeButton2, setActiveButton2] = useState(null);
+	const { setActiveButton, headerButton, setHeaderButton } = useMenuStore();
 
 	useEffect(() => {
 		if (isActive === true) {
-			activeButton2;
+			headerButton;
+			setHeaderButton(1);
 		} else {
-			setActiveButton2();
+			setHeaderButton();
 		}
 	}, [isActive]);
 
 	const toggleOrdersTabF = (id) => {
 		if (id === 2 || id === 3 || id === 4) {
 			setIsActive(false);
-			setActiveButton2(id);
+			setHeaderButton(id);
+			setActiveButton();
 		}
 		setIsActive(true);
-		setActiveButton2(id);
+		setHeaderButton(id);
+		if (id === 1) {
+			// Activate the button in the Sidebar
+			setActiveButton(1);
+		}
 	};
 
 	const namesBtn = [
@@ -43,7 +48,7 @@ const Header = ({}) => {
 		},
 		{
 			id: 3,
-			name: 'Cold dishes',
+			name: 'More dishes',
 			link: '/hotdishes',
 		},
 		{
@@ -52,6 +57,7 @@ const Header = ({}) => {
 			link: '/drinks',
 		},
 	];
+
 	return (
 		<header id='home'>
 			{/* Title */}
@@ -62,7 +68,9 @@ const Header = ({}) => {
 					alt='logo of a cat dressed as a ninja eating ramen'
 				/>
 				<div>
-					<h1 className=' text-xl text-dark dark:text-light md:-mt-11'>
+					<h1 className=' text-xl sm:text-2xl text-dark dark:text-light md:-mt-11 text-shadow '>
+						{' '}
+						{/* md:hidden dark:block */}
 						{name.trim() === '' ? (
 							<Login setName={setName} setIsActive={setIsActive} />
 						) : (
@@ -72,22 +80,22 @@ const Header = ({}) => {
 							</>
 						)}
 					</h1>
-					<p className='text-center md:text-left text-dark dark:text-light opacity-50'>
+					<p className='sm:text-xl text-center md:text-left text-dark dark:text-light dark:opacity-50 dark:block text-shadow dark:text-shadow-none'>
 						{name.trim() === '' ? '' : `${date.toLocaleDateString()}`}
 					</p>
 				</div>
 			</div>
 			{/* Tabs */}
-			<nav className='text-dark dark:text-light flex items-center justify-between md:justify-start md:gap-8 border-b border-fall dark:border-light mb-8 font-bold'>
+			<nav className='text-light dark:text-light bg-secondary flex items-center justify-between md:justify-start md:gap-8 border-b dark:border-light mb-8 font-bold rounded-lg dark:rounded-none'>
 				{namesBtn.map((names) => (
 					<Link to={names.link} key={names.id}>
 						<button onClick={() => toggleOrdersTabF(names.id)}>
 							<p
 								className={`${
-									activeButton2 === names.id
-										? 'before:w-1/2 before:h-[2px] before:absolute before:bg-primary before:left-0 before:rounded-full before:-bottom-[1px] text-primary'
+									headerButton === names.id
+										? 'before:w-1/3 before:h-[2px] before:absolute  before:dark:bg-primary before:left-0 before:rounded-full before:-bottom-[1px] text-fall dark:text-primary '
 										: ''
-								} relative py-2 pr-4 hover:text-fall dark:hover:text-primary font-Nunito`}
+								} relative py-2 pr-4 hover:text-fall dark:hover:text-primary font-Nunito ml-2`}
 							>
 								{names.name}
 							</p>

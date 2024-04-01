@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
 import Orders from '../cart/Orders';
 import AccountTotal from '../cart/AccountTotal';
 import WhereToEat from '../cart/WhereToEat';
 import NumberOrder from '../cart/NumberOrder';
+import AddComment from '../cart/AddComment';
+import { useState } from 'react';
+import PurchaseConfirmation from '../cart/PurchaseConfirmation';
 
 const OrdersTab = (props) => {
 	const { setShowOrder } = props;
@@ -11,33 +13,14 @@ const OrdersTab = (props) => {
 
 	const toggleOpen = () => setIsOpen(!isOpen);
 
-	const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
-
-	useEffect(() => {
-		const handleResize = () => {
-			setIsLargeScreen(window.innerWidth >= 1024);
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		// Clear the event listener when the component is unmounted
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
-
 	return (
 		<>
 			{/* Orders */}
 			<div
 				id='orders'
-				className={`${
-					isLargeScreen ? 'visible' : 'hidden'
-				} bg-primary dark:bg-dark relative pb-40 pt-16 m-10 2xl:pt-1 text-dark dark:text-light p-8 h-full flex flex-col rounded-xl`}
+				className='hidden 2xl:flex bg-secondary bg-opacity-95 dark:bg-dark relative pb-10 pt-16 2xl:pt-1 text-light dark:text-light p-8 h-full w-full flex-col rounded-xl'
 			>
 				<NumberOrder setShowOrder={setShowOrder} />
-
-				<WhereToEat buttonsClass='flex items-center justify-start gap-4 flex-wrap mb-4' />
 
 				<Orders
 					explanation='hidden'
@@ -46,9 +29,11 @@ const OrdersTab = (props) => {
 					pFour='p-4'
 					disguise=''
 				/>
+				<WhereToEat buttonsClass='flex justify-center flex-wrap gap-10 mb-6' />
 
+				<AddComment show='mt-6' />
 				{/* Submit payment */}
-				<div>
+				<div className='flex justify-center flex-col'>
 					<AccountTotal
 						cuantity='Cuantity'
 						discount='Discount'
@@ -60,7 +45,9 @@ const OrdersTab = (props) => {
 						isOpen={isOpen}
 						setIsOpen={setIsOpen}
 						toggleOpen={toggleOpen}
+						paymentButton='hidden'
 					/>
+					<PurchaseConfirmation />
 				</div>
 			</div>
 		</>

@@ -18,7 +18,7 @@ const NumberOrder = () => {
 				onClick={() => setShowOrder(false)}
 				className='2xl:hidden absolute right-4 top-15 p-3 box-content  bg-secondary rounded-full text-xl'
 			/>
-			<h1 className='text-2xl my-4 text-dark dark:text-light'>{`Order #${numeroAleatorio}`}</h1>
+			<h1 className='text-2xl mt-4 text-light'>{`Order #${numeroAleatorio}`}</h1>
 		</>
 	);
 };

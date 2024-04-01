@@ -4,9 +4,9 @@ const Presentation = () => {
 	return (
 		<div className=' relative 2xl:mb-10 flex justify-center items-center sm:h-[500px] md:h-[650px] lg:h-[680px] xl:h-[800px] 2xl:h-[590px] text-light'>
 			<img
-				src='../bg.jpg'
+				src='../bg.webp'
 				alt='ramen restaurant'
-				className='rounded-xl opacity-90 dark:opacity-50 h-full w-full absolute'
+				className='rounded-xl brightness-50 h-full w-full absolute'
 			/>
 			<div className='z-10 text-center flex justify-center flex-col items-center'>
 				<img src='logo.ico' alt='logo' className='' />

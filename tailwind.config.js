@@ -6,15 +6,11 @@ export default {
     extend: {
       colors: {
         primary: "#3E8C6F",
-        /*         primary: '#7CA621', */
         primHover: "#1E8D63",
-        /*         primHover: '#143b01', */
         secondary: "#262837",
         light: "#F2F2F2",
-        /*         illumination: '',  */
         dark: "#1F1D2B",
         delete: "#a81111",
-        /*         blood: '#732626',  */
         fall: "#C15B1C",
         tangerine: "#FF6F03",
         marine: "#012f47",
@@ -24,15 +20,20 @@ export default {
         vegetarian: "#7aa600",
         vegan: "#01472c",
       },
-      /*       backgroundImage: {
-        'custom-img': "url('bg.png')",
-      },   */
-    },
-    fontFamily: {
-      PermanentMarker: ["Permanent Marker"],
-      Inter: ["Inter"],
-      Nunito: ["Nunito"],
+      fontFamily: {
+        PermanentMarker: ["Permanent Marker"],
+        Inter: ["Inter"],
+        Nunito: ["Nunito"],
+      },
+      textShadow: {
+        default: "0px 0px 6px rgba(255, 255, 255, 1)",
+      },
     },
   },
-  plugins: [],
+  variants: {
+    extend: {
+      textShadow: ["responsive"],
+    },
+  },
+  plugins: [require("tailwindcss-textshadow")],
 };

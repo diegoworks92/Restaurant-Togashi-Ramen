@@ -6,17 +6,25 @@ export const useMenuStore = create((set) => ({
 	setShowMenu: (value) => set({ showMenu: value }),
 	activeButton: 1,
 	setActiveButton: (value) => set({ activeButton: value }),
+
+	headerButton: 1,
+	setHeaderButton: (value) => set({ headerButton: value }),
+
 	whereToEat: 0,
 	setWhereToEat: (value) => set({ whereToEat: value }),
 
 	isActive: true,
 	setIsActive: (value) => set({ isActive: value }),
+
+	chooseButton: 1,
+	setChooseButton: (value) => set({ chooseButton: value }),
 }));
 
 // Group the state related to the orders
 export const useOrdersStore = create((set) => ({
 	isOrdersActive: false,
 	setIsOrdersActive: (value) => set({ isOrdersActive: value }),
+
 	showOrdersTab: false,
 	setShowOrdersTab: (value) => set({ showOrdersTab: value }),
 

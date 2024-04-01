@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCartStore } from '../store/store';
 import { ramen, dishes, drinks } from '../cart/dishData';
 import {
@@ -10,6 +10,7 @@ import {
 import { PiPlantFill } from 'react-icons/pi';
 import { FaLeaf } from 'react-icons/fa';
 import { GiChiliPepper } from 'react-icons/gi';
+import AddedToCart from '../cart/AddedToCart';
 
 const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 	const {
@@ -21,7 +22,11 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 		setCountProducts,
 	} = useCartStore();
 
+	const [productAdded, setProductAdded] = useState(false);
+
 	const onAddProduct = (product) => {
+		setProductAdded(true);
+
 		if (
 			allProducts.find((item) => item.id === `${product.type}-${product.id}`)
 		) {
@@ -42,6 +47,16 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 			{ ...product, id: `${product.type}-${product.id}` },
 		]);
 	};
+
+	useEffect(() => {
+		if (productAdded) {
+			const timer = setTimeout(() => {
+				setProductAdded(false);
+			}, 500); // The message will disappear after 2 seconds
+
+			return () => clearTimeout(timer); // Clean the timer if the component is disassembled
+		}
+	}, [productAdded]);
 
 	/* Search */
 	const [search, setSearch] = useState('');
@@ -87,27 +102,32 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 	};
 
 	return (
-		<>
-			<div className='flex justify-between flex-col md:flex-row text-center pb-4'>
+		<div className='bg-secondary bg-opacity-95 dark:bg-transparent rounded-xl pt-6'>
+			<div className='flex justify-center'>
+				<h2 className='order-1 2xl:order-none text-2xl text-light dark:text-light -mt-5'>
+					{title}
+				</h2>
+			</div>
+			<div className='flex justify-between mx-4 dark:mx-0 dark:justify-between flex-col md:flex-row text-center pb-4'>
 				<div
 					className={`flex order-2 md:order-none md:items-center pt-3 md:pt-0 justify-center dark:text-light ${kindFood}`}
 				>
 					<span className='mx-2 text-xl -mt-1 text-delete'>
 						<GiChiliPepper />
 					</span>
-					<span className='text-dark dark:text-light'>Spicy.</span>
+					<span className='text-light dark:text-light'>Spicy.</span>
 					<span className='mx-2 text-xl -mt-1  text-vegetarian'>
 						<FaLeaf />
 					</span>
-					<span className='text-dark dark:text-light'>Vegetarian.</span>
+					<span className='text-light dark:text-light'>Vegetarian.</span>
 					<span className='mx-2 text-xl -mt-1  text-vegan'>
 						<PiPlantFill />
 					</span>
-					<span className='text-dark dark:text-light'>Vegan.</span>
+					<span className='text-light dark:text-light'>Vegan.</span>
 				</div>
 
 				<div
-					className={`flex order-2 md:order-none md:items-center pt-3 md:pt-0 justify-center dark:text-light ${alcohol}`}
+					className={`flex order-2 md:order-none md:items-center pt-3 md:pt-0 justify-center text-light dark:text-light ${alcohol}`}
 				>
 					<span className='mx-2 text-xl -mt-1 text-delete'>
 						<RiBeerFill />
@@ -115,15 +135,12 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 					<span>Alcohol</span>
 				</div>
 
-				<h2 className='order-1 2xl:order-none text-2xl text-dark dark:text-light -mt-5'>
-					{title}
-				</h2>
-				<p className='order-3 2xl:order-none dark:text-light pt-1'>
+				<p className='order-3 2xl:order-none text-light dark:text-light pt-1'>
 					Click on the product to learn more.
 				</p>
 			</div>
 			{/* Search */}
-			<div className='flex flex-col sm:flex-row  sm:justify-between gap-4 mb-8'>
+			<div className='flex flex-col sm:flex-row  sm:justify-between gap-4 mx-12 sm:mx-20 dark:mx-0 mb-8'>
 				<form>
 					<div className='w-full relative'>
 						<RiSearch2Line className='absolute left-3 top-1/2 -translate-y-1/2 text-light' />
@@ -132,7 +149,7 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 							value={search}
 							placeholder='Search'
 							onChange={(e) => setSearch(e.target.value)}
-							className='bg-primary dark:bg-dark py-2 pl-10 pr-4 rounded-2xl text-light outline-none placeholder-light min-w-full lg:min-w-min'
+							className='bg-secondary dark:bg-dark py-2 pl-10  rounded-2xl text-light outline-none placeholder-light min-w-full lg:min-w-min'
 						/>
 					</div>
 				</form>
@@ -142,7 +159,7 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 				{/* Add an accordion to change the sort order */}
 				<details>
 					<summary
-						className={`flex items-center gap-4 text-light bg-primary dark:bg-dark py-2 px-4 min-w-full ${
+						className={`flex items-center gap-4 text-light bg-secondary dark:bg-dark py-2 px-4 min-w-full ${
 							sort ? 'rounded-t-2xl' : 'rounded-2xl'
 						}`}
 						onClick={trueOrder}
@@ -172,7 +189,7 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 					sortedItems.map((product) => (
 						<div
 							key={product.id}
-							className='item bg-primary dark:bg-dark p-8 rounded-xl flex flex-col items-center gap-2 text-center text-light m-4 mt-12 w-full sm:w-1/3 lg:w-1/4 min-w-[240px] relative justify-between'
+							className='item bg-secondary dark:bg-dark p-8 rounded-xl flex flex-col items-center gap-2 text-center text-light m-4 mt-12 w-full sm:w-1/3 lg:w-1/4 min-w-[240px] relative justify-between'
 						>
 							<img
 								src={product.img}
@@ -234,6 +251,7 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 							>
 								Add
 							</button>
+							<AddedToCart show={productAdded} />
 						</div>
 					))
 				) : (
@@ -242,7 +260,7 @@ const Products = ({ title, typeProduct, wi, hei, roun, kindFood, alcohol }) => {
 					</div>
 				)}
 			</div>
-		</>
+		</div>
 	);
 };
 

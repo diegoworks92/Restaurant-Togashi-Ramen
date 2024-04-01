@@ -1,8 +1,11 @@
 import { useOrdersStore, useCartStore } from '../store/store';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import OrderEat from './whereToEat/OrderEat';
 import Buttons from '../designs/Buttons';
+import AddComment from './AddComment';
+import PurchaseConfirmation from './PurchaseConfirmation';
+import WhereToEat from './WhereToEat';
 
 const AccountTotal = (props) => {
 	const {
@@ -15,6 +18,7 @@ const AccountTotal = (props) => {
 		isOpen,
 		details,
 		isOpenAc,
+		paymentButton,
 	} = props;
 
 	const { setIsOrdersActive } = useOrdersStore();
@@ -32,14 +36,19 @@ const AccountTotal = (props) => {
 
 	const navigate = useNavigate();
 
+	const location = useLocation();
+	const currentPath = location.pathname;
+
 	const orderClick = () => {
 		navigate('/orders');
 		setIsOrdersActive(true);
 
-		// Wait a bit to make sure the navigation is finished
 		setTimeout(() => {
 			const contactoElement = document.getElementById('orders');
-			contactoElement.scrollIntoView({ behavior: 'smooth' });
+			if (contactoElement) {
+				// Check if the element exists before trying to access it
+				contactoElement.scrollIntoView({ behavior: 'smooth' });
+			}
 		}, 100);
 	};
 
@@ -54,8 +63,11 @@ const AccountTotal = (props) => {
 					<span>{details}</span>
 				</button>
 			</div>
+
 			{isOpen && (
 				<div className='px-6 pt-6'>
+					<WhereToEat buttonsClass='flex items-center justify-between sm:justify-around 2xl:hidden gap-1 sm:gap-4 flex-wrap mb-6' />
+					<AddComment show='2xl:hidden mb-3' />
 					<div className={`${countProducts === 0 ? 'hidden' : mainClass} mb-2`}>
 						<span>To empty cart</span>
 						<button>
@@ -74,15 +86,28 @@ const AccountTotal = (props) => {
 					<OrderEat numberWithDecimal={numberWithDecimal} />
 				</div>
 			)}
-			<div className='flex justify-center mb-4'>
-				<Link to={window.innerWidth >= 1024 ? 'orders' : 'notification'}>
-					<Buttons
-						buttonName={payment}
-						bgPrimary='bg-fall dark:bg-fall'
-						bgHover='bg-tangerine hover:dark:bg-tangerine'
-						paddingX='4 mb-0 sm:-mb-2 md:mb-0'
-						onclick={orderClick}
-					/>
+
+			<div className={`flex justify-center mb-4 ${paymentButton}`}>
+				<Link
+					to={
+						currentPath !== '/orders'
+							? window.innerWidth >= 1024
+								? 'orders'
+								: ''
+							: '#'
+					}
+				>
+					{window.innerWidth >= 1536 ? (
+						<Buttons
+							buttonName={payment}
+							bgPrimary='bg-fall dark:bg-fall'
+							bgHover='bg-tangerine hover:dark:bg-tangerine'
+							paddingX='4 mb-0 sm:-mb-2 md:mb-0'
+							onclick={orderClick}
+						/>
+					) : (
+						<PurchaseConfirmation />
+					)}
 				</Link>
 			</div>
 		</div>

@@ -3,7 +3,7 @@ export const ramen = [
 	{
 		id: 1,
 		type: 'ramen',
-		img: './ramen/ramen1.png',
+		img: '/ramen/ramen1.webp',
 		name: 'Curry Ramen',
 		description:
 			'“Ramen with chicken broth made with soy, miso, and yellow curry. With farm-raised chashu pork secret slices, bamboo, shiitake mushrooms, semi-cooked and marinated free-range egg, and tender green onion.”',
@@ -17,7 +17,7 @@ export const ramen = [
 	{
 		id: 2,
 		type: 'ramen',
-		img: './ramen/ramen2.png',
+		img: '/ramen/ramen2.webp',
 		name: 'Heura Tonkotsu Ramen',
 		description:
 			'“Ramen with vegetable broth, Heura plant protein, shiitake mushrooms, pak choi, semi-cooked and marinated free-range egg, and tender green onion.”',
@@ -31,7 +31,7 @@ export const ramen = [
 	{
 		id: 3,
 		type: 'ramen',
-		img: './ramen/ramen3.png',
+		img: '/ramen/ramen3.webp',
 		name: 'Vegan Ramen',
 		description:
 			'“Ramen with vegetable and miso broth, Heura plant protein, bamboo slices, red onion, chives, pak choi, shimeji mushrooms, and corn.”',
@@ -45,7 +45,7 @@ export const ramen = [
 	{
 		id: 4,
 		type: 'ramen',
-		img: './ramen/ramen4.png',
+		img: '/ramen/ramen4.webp',
 		name: 'Mushroom Ramen',
 		description:
 			'“House curry blend + vegan dashi; fried king trumpet mushroom, tempura-fried tofu, soybean sprouts, nori, kikurage, scallions, organic eggs.”',
@@ -59,7 +59,7 @@ export const ramen = [
 	{
 		id: 5,
 		type: 'ramen',
-		img: './ramen/ramen5.png',
+		img: '/ramen/ramen5.webp',
 		name: 'Tampopo Ramen',
 		description:
 			'“Ramen noodles with chicken broth made with soy, marinated chashu pork slices, sweet corn, semi-cooked and marinated free-range egg, naruto, nori seaweed, bamboo slices, and tender green onion.”',
@@ -73,7 +73,7 @@ export const ramen = [
 	{
 		id: 6,
 		type: 'ramen',
-		img: './ramen/ramen6.png',
+		img: '/ramen/ramen6.webp',
 		name: 'Tonkotsu Ramen',
 		description:
 			'“Ramen with vegetable broth, farm-raised chashu pork slices, shiitake mushrooms, pak choi, semi-cooked and marinated free-range egg, and tender green onion.”',
@@ -87,7 +87,7 @@ export const ramen = [
 	{
 		id: 7,
 		type: 'ramen',
-		img: './ramen/ramen7.png',
+		img: '/ramen/ramen7.webp',
 		name: 'Miso Ramen',
 		description:
 			'“Ramen noodles with chicken broth made with soy and miso. With marinated chashu pork slices, wakame seaweed, semi-cooked and marinated free-range egg, nori seaweed, and tender green onion.”',
@@ -105,7 +105,7 @@ export const dishes = [
 	{
 		id: 1,
 		type: 'dishes',
-		img: './dishes/dish1.png',
+		img: './dishes/dish1.webp',
 		name: 'Bulgogi Style Beef Fried Rice',
 		description:
 			'Salteados con setas shiitake, zanahoria, calabacín, cebollino y pechuga de pollo de corral rebozada con maíz tostado crujiente, salsa yakisoba y teriyaki',
@@ -116,7 +116,7 @@ export const dishes = [
 	{
 		id: 2,
 		type: 'dishes',
-		img: './dishes/dish2.png',
+		img: './dishes/dish2.webp',
 		name: 'Dan Dan Noodles',
 		description:
 			'Salteados con setas shiitake, zanahoria, calabacín, cebollino y pechuga de pollo de corral rebozada con maíz tostado crujiente, salsa yakisoba y teriyaki Salteados con setas shiitake, zanahoria, calabacín, cebollino y pechuga de pollo de corral rebozada con maíz tostado crujiente, salsa yakisoba y teriyaki ',
@@ -127,7 +127,7 @@ export const dishes = [
 	{
 		id: 3,
 		type: 'dishes',
-		img: './dishes/dish3.png',
+		img: './dishes/dish3.webp',
 		name: 'Authentic Thai Fried Rice',
 		description: '',
 		price: '9.50',
@@ -137,7 +137,7 @@ export const dishes = [
 	{
 		id: 4,
 		type: 'dishes',
-		img: './dishes/dish4.png',
+		img: './dishes/dish4.webp',
 		name: 'Kakitamajiru (Japanese Egg Drop Soup)',
 		description: '',
 		price: '8.00',
@@ -147,7 +147,7 @@ export const dishes = [
 	{
 		id: 5,
 		type: 'dishes',
-		img: './dishes/dish5.png',
+		img: './dishes/dish5.webp',
 		name: 'Chicken Tikka Masala',
 		description: '',
 		price: '10.00',
@@ -157,7 +157,7 @@ export const dishes = [
 	{
 		id: 6,
 		type: 'dishes',
-		img: './dishes/dish6.png',
+		img: './dishes/dish6.webp',
 		name: 'Beef and shiitake mushroom ramen',
 		description: '',
 		price: '8.50',
@@ -167,7 +167,7 @@ export const dishes = [
 	{
 		id: 7,
 		type: 'dishes',
-		img: './dishes/dish7.png',
+		img: './dishes/dish7.webp',
 		name: 'Duck Chow Mein',
 		description: '',
 		price: '7.00',
@@ -177,7 +177,7 @@ export const dishes = [
 	{
 		id: 8,
 		type: 'dishes',
-		img: './dishes/dish8.png',
+		img: './dishes/dish8.webp',
 		name: 'Oven Roasted Vegetables',
 		description: '',
 		price: '8.50',
@@ -187,7 +187,7 @@ export const dishes = [
 	{
 		id: 9,
 		type: 'dishes',
-		img: './dishes/dish9.png',
+		img: './dishes/dish9.webp',
 		name: 'Chicken and Broccoli',
 		description: '',
 		price: '8.50',
@@ -201,7 +201,7 @@ export const drinks = [
 	{
 		id: 1,
 		type: 'drinks',
-		img: './drinks/drink1.png',
+		img: './drinks/drink1.webp',
 		description:
 			'“The delicious and original soft drink from Coca Cola, the most famous and well-known beverage in the world thanks to its distinctive taste.”',
 		name: 'Coca-Cola 33cl',
@@ -212,7 +212,7 @@ export const drinks = [
 	{
 		id: 2,
 		type: 'drinks',
-		img: './drinks/drink2.png',
+		img: './drinks/drink2.webp',
 		name: 'Fanta Orange 33cl',
 		description:
 			'“Tasty beverage with bubbles and an orange flavor. Ideal for having fun and refreshing yourself.”',
@@ -223,7 +223,7 @@ export const drinks = [
 	{
 		id: 3,
 		type: 'drinks',
-		img: './drinks/drink3.png',
+		img: './drinks/drink3.webp',
 		name: '7UP 33cl',
 		description:
 			'“A refreshing and carbonated drink, with a sweet touch of lime and lemon flavor.”',
@@ -234,7 +234,7 @@ export const drinks = [
 	{
 		id: 4,
 		type: 'drinks',
-		img: './drinks/drink4.png',
+		img: './drinks/drink4.webp',
 		name: 'Coca-Cola Cherry 33cl',
 		description: '“The authentic Coca Cola with a cherry twist.”',
 		price: '1.99',
@@ -244,7 +244,7 @@ export const drinks = [
 	{
 		id: 5,
 		type: 'drinks',
-		img: './drinks/drink5.png',
+		img: './drinks/drink5.webp',
 		name: 'Fanta Lemon 33cl',
 		description:
 			'“Tasty beverage with acidic notes and a lemon flavor. Ideal for quenching thirst and refreshing yourself.”',
@@ -255,7 +255,7 @@ export const drinks = [
 	{
 		id: 6,
 		type: 'drinks',
-		img: './drinks/drink6.png',
+		img: './drinks/drink6.webp',
 		name: 'Aquarius 33cl',
 		description:
 			'“Delicious refreshing drink flavored with a lemon taste. Ideal for cooling off, replenishing minerals, and maintaining good hydration.”',
@@ -266,7 +266,7 @@ export const drinks = [
 	{
 		id: 7,
 		type: 'drinks',
-		img: './drinks/drink7.png',
+		img: './drinks/drink7.webp',
 		name: 'Heineken 33cl',
 		description:
 			'“It’s a beer with 5.0% alc. vol of Lager type and Pilsen style.”',
@@ -277,7 +277,7 @@ export const drinks = [
 	{
 		id: 8,
 		type: 'drinks',
-		img: './drinks/drink8.png',
+		img: './drinks/drink8.webp',
 		name: 'Horoyoi Melon 33cl',
 		description:
 			'“A favorite among fruity, sugary alcoholic drink lovers across Japan and at only 3% alcohol”',
@@ -288,7 +288,7 @@ export const drinks = [
 	{
 		id: 9,
 		type: 'drinks',
-		img: './drinks/drink9.png',
+		img: './drinks/drink9.webp',
 		name: 'Horoyoi Winter Tangerine 33cl',
 		description:
 			'“Slightly carbonated and not too sweet, but warm and sweet. It’s exclusive to Horoyoi and at only 3% alcohol.”',
@@ -299,7 +299,7 @@ export const drinks = [
 	{
 		id: 10,
 		type: 'drinks',
-		img: './drinks/drink10.png',
+		img: './drinks/drink10.webp',
 		name: 'Horoyoi Peach 33cl',
 		description:
 			'“A gentle taste that you can enjoy the fresh taste of ripe white peach and at only 3% alcohol.”',
@@ -310,7 +310,7 @@ export const drinks = [
 	{
 		id: 11,
 		type: 'drinks',
-		img: './drinks/drink11.png',
+		img: './drinks/drink11.webp',
 		name: 'Sapporo Yebisu The Hop 33cl',
 		description:
 			'“Limited brew. 100% malt. Germany Hallertau aromatic hops and some Czech Saaz fine aroma hops are used with 5.5% alcohol.”',
@@ -321,7 +321,7 @@ export const drinks = [
 	{
 		id: 12,
 		type: 'drinks',
-		img: './drinks/drink12.png',
+		img: './drinks/drink12.webp',
 		name: 'Sapporo Mugi to Hop 33cl',
 		description:
 			'“Made with Rich Gold malt and Golden Aroma hops, and is the reason for “The gold” in its title with 5% alcohol.”',

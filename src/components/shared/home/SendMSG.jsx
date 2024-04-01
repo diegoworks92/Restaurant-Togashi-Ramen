@@ -42,7 +42,7 @@ const SendMSG = () => {
 	return (
 		<div className='flex flex-col justify-center items-center md:mt-10'>
 			<form
-				className='md:px-10 px-12 pt-5 pb-10 bg-concrete rounded shadow-md dark:bg-secondary md:grid md:grid-cols-2 gap-5'
+				className='md:px-10 px-12 pt-5 pb-10 bg-secondary rounded shadow-md dark:bg-secondary md:grid md:grid-cols-2 gap-5'
 				onSubmit={handleSubmit(onSubmit)}
 			>
 				<div className=' h-5 col-span-2 text-center'>
@@ -50,7 +50,7 @@ const SendMSG = () => {
 				</div>
 
 				<div className='relative mb-7'>
-					<label className='block mb-2 text-sm text-dark dark:text-light'>
+					<label className='block mb-2 text-sm text-light dark:text-light'>
 						Your Name
 					</label>
 					<input
@@ -59,18 +59,18 @@ const SendMSG = () => {
 						{...register('name', { required: true, maxLength: 10 })}
 					/>
 					{errors.name?.type === 'required' && (
-						<p className='text-red-500 text-xs italic absolute'>
+						<p className='text-delete text-xs italic absolute'>
 							A value for the name field is required
 						</p>
 					)}
 					{errors.name?.type === 'maxLength' && (
-						<p className='text-red-500 text-xs italic absolute'>
+						<p className='text-delete text-xs italic absolute'>
 							The name field must be less than 10 characters long
 						</p>
 					)}
 				</div>
 				<div className='mb-7'>
-					<label className='block mb-2 text-sm text-dark dark:text-light'>
+					<label className='block mb-2 text-sm text-light dark:text-light'>
 						Email
 					</label>
 					<input
@@ -82,19 +82,19 @@ const SendMSG = () => {
 						})}
 					/>
 					{errors.email?.type === 'required' && (
-						<p className='text-red-500 text-xs italic'>
+						<p className='text-delete text-xs italic'>
 							A value for the email field is required
 						</p>
 					)}
 					{errors.email?.type === 'pattern' && (
-						<p className='text-red-500 text-xs italic'>
+						<p className='text-delete text-xs italic'>
 							The email format is incorrect
 						</p>
 					)}
 				</div>
 
 				<div className='mb-5 col-span-2'>
-					<label className='block mb-2 text-sm text-dark dark:text-light'>
+					<label className='block mb-2 text-sm text-light dark:text-light'>
 						Message
 					</label>
 					<textarea
@@ -109,18 +109,18 @@ const SendMSG = () => {
 						}}
 					/>
 					{errors.message && errors.message.type === 'required' && (
-						<p className='text-red-500 text-xs italic'>
+						<p className='text-delete text-xs italic'>
 							A value for the new field is required
 						</p>
 					)}
 				</div>
 				<div className=' text-center col-span-2'>
 					<Buttons
-						typeSubmit={'submit'}
 						buttonName='Send'
-						bgPrimary='bg-primary'
+						typeSubmit={'submit'}
+						bgPrimary='bg-primary px-10'
 						bgHover='bg-primHover'
-						paddingX='10'
+						paddingX=''
 					/>
 				</div>
 			</form>

@@ -1,23 +1,23 @@
-import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import {
+	RiHome6Line,
+	RiPercentLine,
+	RiMailLine,
+	RiLogoutBoxRLine,
+	/* 	RiNotification2Line, */
+} from 'react-icons/ri';
+import { FaCartShopping } from 'react-icons/fa6';
+import { MdDarkMode, MdOutlineLightMode, MdPhotoCamera } from 'react-icons/md';
 import {
 	useMenuStore,
 	useOrdersStore,
 	useCartStore,
 	useUserStore,
 } from './store/store';
-import {
-	RiHome6Line,
-	RiPercentLine,
-	RiPieChartLine,
-	RiMailLine,
-	/* 	RiNotification2Line, */
-	RiLogoutBoxRLine,
-} from 'react-icons/ri';
-import { MdDarkMode, MdOutlineLightMode, MdPhotoCamera } from 'react-icons/md';
 
-const Sidebar = (props) => {
-	const { theme, setTheme } = props;
+const Sidebar = ({ theme, setTheme }) => {
+	const navigate = useNavigate();
 
 	const [color, setColor] = useState(false);
 
@@ -26,10 +26,16 @@ const Sidebar = (props) => {
 
 	const { setCountProducts, setAllProducts, setTotal } = useCartStore();
 
-	const { name, setName, setShowModal } = useUserStore();
+	const { setName, setShowModal } = useUserStore();
 
-	const { showMenu, activeButton, setActiveButton, isActive, setIsActive } =
-		useMenuStore();
+	const {
+		showMenu,
+		activeButton,
+		setActiveButton,
+		isActive,
+		setIsActive,
+		setHeaderButton,
+	} = useMenuStore();
 
 	const toggleOrdersTab = (id) => {
 		setShowOrdersTab(!showOrdersTab);
@@ -53,32 +59,46 @@ const Sidebar = (props) => {
 		setIsActive(true);
 	};
 
-	const button = (id) => {
-		if (id !== activeButton) {
-			setIsActive(false);
-			setActiveButton(id);
-		}
+	const buttonActions = {
+		1: () => {
+			homeClick(1);
+			toggleOrdersTabF(1);
+		},
+		2: () => {
+			toggleOrdersTab(2);
+			orderClick(2);
+		},
+		3: () => {
+			discountClick(3);
+			toggleOrdersTabF(3);
+		},
+		4: () => {
+			contactClick(4);
+			toggleOrdersTabF(4);
+		},
+
+		6: () => {
+			galleryClick(6);
+			toggleOrdersTabF(6);
+		},
+		7: () => handleChangeTheme(),
+		8: () => {
+			handleExit(8);
+			homeClick(8);
+			toggleOrdersTabF(8);
+		},
+		default: (id) => toggleOrdersTabF(id),
+	};
+
+	const handleButtonClick = (id) => {
+		setIsActive(true);
+		setActiveButton(id);
 		if (id === 1) {
-			setIsActive(true);
-			homeClick(id);
-			toggleOrdersTabF(id);
-		} else if (id === 2) {
-			toggleOrdersTab(id);
-			orderClick(id);
-		} else if (id === 3) {
-			discountClick(id);
-		} else if (id === 4) {
-			contactClick(id);
-		} else if (id === 6) {
-			galleryClick(id);
-		} else if (id === 7) {
-			handleChangeTheme(id);
-		} else if (id === 8) {
-			handleExit(id);
-			homeClick(id);
+			setHeaderButton(1);
 		} else {
-			toggleOrdersTabF(id);
+			setHeaderButton(false);
 		}
+		buttonActions[id] ? buttonActions[id]() : buttonActions.default(id);
 	};
 
 	useEffect(() => {
@@ -91,6 +111,12 @@ const Sidebar = (props) => {
 		if (isOrdersActive) {
 			toggleOrdersTab(2);
 			setIsActive(false);
+			setTimeout(() => {
+				const contactoElement = document.getElementById('orders');
+				if (contactoElement) {
+					contactoElement.scrollIntoView({ behavior: 'smooth' });
+				}
+			}, 100);
 		}
 	}, [isOrdersActive]);
 
@@ -98,107 +124,49 @@ const Sidebar = (props) => {
 		{
 			id: 1,
 			buttons: [
-				{
-					id: 1,
-					link: '/',
-					icons: <RiHome6Line />,
-				},
+				{ id: 1, link: '/', icons: <RiHome6Line /> },
 				{
 					id: 2,
 					link: '/orders',
-					icons: <RiPieChartLine />,
+					icons: <FaCartShopping />,
+					showOnLarge: true,
 				},
-				{
-					id: 3,
-					link: '/',
-					icons: <RiPercentLine />,
-				},
-				{
-					id: 4,
-					link: '/',
-					icons: <RiMailLine />,
-				},
-				/*                 {
-                    id: 5,
-                    link: "/notification", 
-                    icons: <RiNotification2Line/>,
-                }, */
-				{
-					id: 6,
-					link: '/',
-					icons: <MdPhotoCamera />,
-				},
+				{ id: 3, link: '/', icons: <RiPercentLine /> },
+				/* 	{ id: 5, link: '/notification', icons: <RiNotification2Line /> }, */
+				{ id: 4, link: '/', icons: <RiMailLine /> },
+				{ id: 6, link: '/', icons: <MdPhotoCamera /> },
 				{
 					id: 7,
 					icons: theme === 'dark' ? <MdOutlineLightMode /> : <MdDarkMode />,
 				},
-				{
-					id: 8,
-					link: '/',
-					icons: <RiLogoutBoxRLine />,
-				},
+				{ id: 8, link: '/', icons: <RiLogoutBoxRLine /> },
 			],
 		},
 	];
-
-	/* Theme */
 
 	const handleChangeTheme = () => {
 		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
 
-	/* gallery */
-	const navigate = useNavigate();
-
-	const galleryClick = () => {
+	const scrollToElement = (id) => {
 		navigate('/');
-
-		// Wait a bit to make sure the navigation is finished
 		setTimeout(() => {
-			const contactoElement = document.getElementById('gallery');
-			contactoElement.scrollIntoView({ behavior: 'smooth' });
+			const elemento = document.getElementById(id);
+			if (elemento) {
+				elemento.scrollIntoView({ behavior: 'smooth' });
+			}
 		}, 100);
 	};
 
-	const contactClick = () => {
-		navigate('/');
-
-		setTimeout(() => {
-			const contactoElement = document.getElementById('contact');
-			contactoElement.scrollIntoView({ behavior: 'smooth' });
-		}, 100);
-	};
-
-	const discountClick = () => {
-		navigate('/');
-
-		setTimeout(() => {
-			const contactoElement = document.getElementById('discount');
-			contactoElement.scrollIntoView({ behavior: 'smooth' });
-		}, 100);
-	};
-
-	const homeClick = () => {
-		navigate('/');
-
-		setTimeout(() => {
-			const contactoElement = document.getElementById('home');
-			contactoElement.scrollIntoView({ behavior: 'smooth' });
-		}, 100);
-	};
-
-	const orderClick = () => {
-		navigate('/orders');
-
-		setTimeout(() => {
-			const contactoElement = document.getElementById('orders');
-			contactoElement.scrollIntoView({ behavior: 'smooth' });
-		}, 100);
-	};
+	const galleryClick = () => scrollToElement('gallery');
+	const contactClick = () => scrollToElement('contact');
+	const discountClick = () => scrollToElement('discount');
+	const homeClick = () => scrollToElement('home');
+	const orderClick = () => scrollToElement('orders');
 
 	return (
 		<div
-			className={` bg-primary dark:bg-dark fixed 2xl:left-0 top-0 w-28 h-full flex flex-col justify-between py-6 rounded-tr-xl rounded-br-xl z-50 transition-all ${
+			className={`bg-secondary bg-opacity-95 dark:bg-dark fixed 2xl:left-0 top-0 w-28 h-full flex flex-col justify-between py-6 rounded-tr-xl rounded-br-xl z-50 transition-all ${
 				showMenu ? 'left-0' : '-left-full'
 			}`}
 		>
@@ -207,31 +175,49 @@ const Sidebar = (props) => {
 					<div>
 						{sidebar.map((data) => (
 							<div key={data.id}>
-								{data.buttons.map((e) => {
-									const isMobile = window.innerWidth <= 1535;
-									const buttonClass = `${
-										activeButton === e.id
-											? 'bg-fall dark:bg-primary text-light dark:text-light'
-											: 'text-light dark:text-primary'
-									} ${isActive ? 'active' : ''} 
-                                                        text-2xl group-hover:bg-fall flex justify-center p-4 rounded-xl  group-hover:text-light transition-colors`;
-									const hiddenClass = e.id === 2 && isMobile ? 'hidden' : '';
-									return (
+								{data.buttons.map((button) =>
+									button.showOnLarge ? (
 										<li
-											key={e.id}
-											className={`hover:bg-light dark:hover:bg-secondary p-4 rounded-tl-xl rounded-bl-xl group transition-colors ${hiddenClass}`}
+											key={button.id}
+											className={`2xl:block hidden hover:bg-secondary dark:hover:bg-secondary p-4 rounded-tl-xl rounded-bl-xl group transition-colors`}
 										>
-											<Link to={e.link}>
+											<Link to={button.link}>
 												<button
-													className={buttonClass}
-													onClick={() => button(e.id)}
+													className={`${
+														activeButton === button.id
+															? 'bg-fall dark:bg-primary text-light dark:text-light'
+															: 'text-light dark:text-primary'
+													} ${
+														isActive ? 'active' : ''
+													} text-2xl group-hover:bg-fall flex justify-center p-4 rounded-xl  group-hover:text-light transition-colors`}
+													onClick={() => handleButtonClick(button.id)}
 												>
-													<span>{e.icons} </span>
+													<span>{button.icons} </span>
 												</button>
 											</Link>
 										</li>
-									);
-								})}
+									) : (
+										<li
+											key={button.id}
+											className={`hover:bg-secondary  dark:hover:bg-secondary p-4 rounded-tl-xl rounded-bl-xl group transition-colors`}
+										>
+											<Link to={button.link}>
+												<button
+													className={`${
+														activeButton === button.id
+															? 'bg-fall dark:bg-primary text-light dark:text-light'
+															: 'text-light dark:text-primary'
+													} ${
+														isActive ? 'active' : ''
+													} text-2xl group-hover:bg-fall flex justify-center p-4 rounded-xl  group-hover:text-light transition-colors`}
+													onClick={() => handleButtonClick(button.id)}
+												>
+													<span>{button.icons} </span>
+												</button>
+											</Link>
+										</li>
+									),
+								)}
 							</div>
 						))}
 					</div>

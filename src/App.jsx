@@ -12,11 +12,11 @@ import {
 	RiPieChartLine,
 	RiCloseLine,
 } from 'react-icons/ri';
+import { FaCartShopping } from 'react-icons/fa6';
 //Components
 import Sidebar from './components/shared/Sidebar';
 import Car from './components/shared/Car';
 import Header from './components/shared/Header';
-
 import { Routes, Route } from 'react-router-dom';
 import Drinks from './components/shared/header/Drinks';
 import HotDishes from './components/shared/header/HotDishes';
@@ -45,8 +45,8 @@ function App() {
 	};
 
 	const toggleOrders = () => {
-		setShowOrder(!showOrder);
 		setShowMenu(false);
+		setShowOrder(!showOrder);
 	};
 
 	const handleExit = () => {
@@ -57,7 +57,7 @@ function App() {
 		setCountProducts(0);
 	};
 
-	/* Theme */
+	//Theme
 
 	const [theme, setTheme] = useState(() => {
 		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -75,7 +75,15 @@ function App() {
 	}, [theme]);
 
 	return (
-		<div className='dark:bg-secondary bg-light bg-repeat w-full min-h-screen font-Nunito font-semibold'>
+		<div
+			className={`dark:bg-secondary bg-repeat w-full min-h-screen font-Nunito font-semibold`}
+			style={{
+				backgroundImage:
+					theme === 'dark'
+						? ''
+						: `url('https://img.freepik.com/vector-premium/vector-patrones-fisuras-nube-o-rio-chino-fondo-asiatico-tradicional-diseno-abstracto_87543-7672.jpg')`,
+			}}
+		>
 			<Sidebar theme={theme} setTheme={setTheme} />
 
 			<SignOff />
@@ -86,11 +94,11 @@ function App() {
 				<button onClick={handleExit} className='p-2'>
 					<RiUser3Line />
 				</button>
-				<button className='p-2'>
+				{/* 		<button className='p-2'>
 					<RiAddLine />
-				</button>
+				</button> */}
 				<button onClick={toggleOrders} className='p-2'>
-					<RiPieChartLine />
+					<FaCartShopping />
 				</button>
 				<button className='text-light p-2' onClick={toggleMenu}>
 					{showMenu ? <RiCloseLine /> : <RiMenu3Fill />}
@@ -99,6 +107,7 @@ function App() {
 			<main className='2xl:pl-32 2xl:pr-96 pb-20'>
 				<div className='md:p-8 p-4'>
 					{/* Header */}
+
 					<Header />
 
 					{/* Content */}

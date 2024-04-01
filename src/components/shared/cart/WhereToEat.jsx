@@ -1,7 +1,7 @@
 import { useMenuStore } from '../store/store';
 
 const WhereToEat = (props) => {
-	const { activeButton, setActiveButton, setWhereToEat } = useMenuStore();
+	const { chooseButton, setChooseButton, setWhereToEat } = useMenuStore();
 
 	const { buttonsClass } = props;
 
@@ -12,7 +12,7 @@ const WhereToEat = (props) => {
 	];
 
 	const clickDine = (id) => {
-		setActiveButton(id);
+		setChooseButton(id);
 
 		if (id === 1) {
 			setWhereToEat(1);
@@ -33,7 +33,7 @@ const WhereToEat = (props) => {
 					<button
 						key={button.id}
 						className={`py-2 sm:py-1 md:py-2 px-1 sm:px-2 rounded-xl flex flex-wrap justify-center ${
-							activeButton === button.id
+							chooseButton === button.id
 								? 'bg-fall text-light dark:text-light'
 								: 'text-light dark:text-primary border border-light dark:border-light'
 						}`}

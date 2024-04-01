@@ -42,7 +42,7 @@ const Imgs = () => {
 		<>
 			<div
 				id='gallery'
-				className='relative bg-primary dark:bg-dark p-2 2xl:p-8 2xl:mt-10 2xl:pt-0 text-light dark:text-light  h-full flex flex-col rounded-xl'
+				className='relative bg-secondary bg-opacity-95 dark:bg-dark p-2 2xl:p-8 2xl:mt-10 2xl:pt-0 text-light dark:text-light  h-full flex flex-col rounded-xl'
 			>
 				<h2 className='flex justify-center font-PermanentMarker mb-2 2xl:m-4 text-2xl'>
 					GALLERY
@@ -111,7 +111,7 @@ export default Imgs;
 const imgs = [
 	{
 		id: 1,
-		src: '../kitchen/img1.png',
+		src: '../kitchen/img1.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:
@@ -119,7 +119,7 @@ const imgs = [
 	},
 	{
 		id: 2,
-		src: '../kitchen/img2.png',
+		src: '../kitchen/img2.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:
@@ -127,7 +127,7 @@ const imgs = [
 	},
 	{
 		id: 3,
-		src: '../kitchen/img3.png',
+		src: '../kitchen/img3.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:
@@ -135,7 +135,7 @@ const imgs = [
 	},
 	{
 		id: 4,
-		src: '../kitchen/img4.png',
+		src: '../kitchen/img4.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:
@@ -143,7 +143,7 @@ const imgs = [
 	},
 	{
 		id: 5,
-		src: '../kitchen/img5.png',
+		src: '../kitchen/img5.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:
@@ -151,7 +151,7 @@ const imgs = [
 	},
 	{
 		id: 6,
-		src: '../kitchen/img6.png',
+		src: '../kitchen/img6.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:
@@ -159,7 +159,7 @@ const imgs = [
 	},
 	{
 		id: 7,
-		src: '../kitchen/img7.png',
+		src: '../kitchen/img7.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:
@@ -167,7 +167,7 @@ const imgs = [
 	},
 	{
 		id: 8,
-		src: '../kitchen/img8.png',
+		src: '../kitchen/img8.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:
@@ -175,7 +175,7 @@ const imgs = [
 	},
 	{
 		id: 9,
-		src: '../kitchen/img9.png',
+		src: '../kitchen/img9.webp',
 		alt: 'asian restaurant',
 		classDiv: 'w-full h-44 overflow-hidden',
 		classImg:

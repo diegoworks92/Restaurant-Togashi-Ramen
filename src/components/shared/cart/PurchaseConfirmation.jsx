@@ -1,28 +1,23 @@
 import { useState } from 'react';
-import { useUserStore } from './store/store';
 import { MdOutlineCancel } from 'react-icons/md';
-import Buttons from './designs/Buttons';
+import Buttons from '../designs/Buttons';
 
-function SignOff() {
-	const { name, setName, showModal, setShowModal } = useUserStore();
-	const [error, setError] = useState('');
-	const handleNameSubmit = () => {
-		if (name.trim() === '') {
-			setError('Por favor, introduce tu nombre.');
-		} else {
-			setError('');
-			setShowModal(false);
-		}
-	};
+function PurchaseConfirmation() {
+	const [showModal, setShowModal] = useState(false);
 
-	const handleKeyPress = (event) => {
-		if (event.key === 'Enter') {
-			handleNameSubmit();
-		}
+	const handlePurchase = () => {
+		setShowModal(true);
 	};
 
 	return (
-		<div className='App'>
+		<div className='flex justify-center whitespace-nowrap'>
+			<Buttons
+				buttonName='Make the purchase of the order'
+				bgPrimary='bg-delete 2xl:w-1/3'
+				bgHover='bg-tangerine hover:dark:bg-tangerine'
+				paddingX='4'
+				onclick={handlePurchase}
+			/>
 			{showModal && (
 				<div className='fixed z-50 inset-0 overflow-y-auto'>
 					<div className='flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
@@ -39,7 +34,7 @@ function SignOff() {
 							​
 						</span>
 						<div className='inline-block align-bottom bg-light rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-light'>
-							<div className='bg-secondary text-dark dark:bg-dark px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>
+							<div className='bg-primary text-dark dark:bg-dark px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>
 								<div className='sm:flex sm:items-start'>
 									<button
 										type='button'
@@ -53,32 +48,18 @@ function SignOff() {
 											className='text-2xl leading-6 font-semibold text-light mb-5'
 											id='modal-title'
 										>
-											Log in
+											Purchased product
 										</h3>
-										<div className='mt-2'>
-											<input
-												type='text'
-												onChange={(e) => setName(e.target.value.toUpperCase())}
-												onKeyPress={handleKeyPress}
-												className='shadow appearance-none border rounded w-full py-2 px-3 dark:text-light dark:bg-secondary border-secondary leading-tight focus:outline-none focus:shadow-outline'
-												id='username'
-												placeholder="What's your name?"
-												maxLength='15'
-											/>
-											{error && (
-												<p className='text-delete text-xs italic'>{error}</p>
-											)}
-										</div>
 									</div>
 								</div>
 							</div>
-							<div className='text-center bg-secondary dark:bg-dark px-4 sm:px-6 sm:flex sm:flex-row-reverse'>
+							<div className='text-center bg-primary dark:bg-dark px-4 sm:px-6 sm:flex sm:flex-row-reverse'>
 								<Buttons
 									buttonName='Accept'
 									bgPrimary='bg-fall dark:bg-fall'
 									bgHover='bg-tangerine hover:dark:bg-tangerine'
 									paddingX='4'
-									onclick={handleNameSubmit}
+									onclick={() => setShowModal(false)}
 								></Buttons>
 							</div>
 						</div>
@@ -89,4 +70,4 @@ function SignOff() {
 	);
 }
 
-export default SignOff;
+export default PurchaseConfirmation;
